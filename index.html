@@ -8,4 +8,64 @@
 <body>
     
 </body>
+<script>
+    function verifierCarte(numeroCarte,moisExp,anneeExp, CVV){
+        let typeCarte = identifierTypeCard(numeroCarte);// Identifier le type de carte.
+        if(typeCarte === "Type Inconnu"){
+            return {valid: false, message: "Votre carte n'est pas reconnue."};
+        }
+        if(!verifierLuhn(numeroCarte)){
+            return {valid: false, message: "Votre numéro de carte n'est pas reconnue."};
+        }
+        if(!verifierDateExp(moisExp,anneeExp)){
+            return {valid: false, message: "Votre carte est expirée!"};
+        }
+        if(!verifierCVV(CVV,typeCarte)){
+            return {valid: false, message: "Votre carte est invalide!"};
+        }
+        return {valid:true,message:"Super vous pouvez payé."};
+    }
+    function verifierDateExp(mois,annee){
+        let maintenant = new Date();
+        let anneeActuelle = maintenant.getFullYear();
+        let moisActuelle = maintenant.getMonth()+1;
+        annee=parseInt(annee,10);
+        mois=parseInt(mois,10);
+        if(annee<anneeActuelle||(annee===anneeActuelle&&mois<moisActuelle)){
+            return false;
+        }
+        return true;
+    }
+    function verifierLuhn(numeroCarte){
+        let somme = 0;
+        let alterner = false;
+        numeroCarte = numeroCarte.replace(/\D/g, "");// /\D = Tous les caractères de 0-9.
+        for(let i=numeroCarte.length-1; i>=0; i--){
+            let chiffre = parseInt(numeroCarte[i], 10);
+            if(alterner){
+                chiffre*=2;
+                if(chiffre>9)chiffre-=9;
+            }
+            somme+=chiffre;
+            alterner=!alterner;
+        }
+        return(somme%10===0);
+    }
+    function verifierCVV(CVV,typeCarte){
+        if(!/^[0-9]{3,4}$/.test(CVV)) return false;
+        if((typeCarte === "AmericanExpress"&& CVV.length !== 4)||(typeCarte === "AmericanExpress"&& CVV.length !== 3)){
+            return false;
+        }
+        return true;
+    }
+    function identifierTypeCard(numeroCarte){// Utilisation des Regex/Expression régulière pour verifier différente données.
+        if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(numeroCarte)) return "Visa";
+        if(/^5[1-5][0-9]{14}$|^22[2-9][0-9]{12}$|^2[3-7][0-9]{13}$/.test(numeroCarte)) return "MasterCard";
+        if(/^3[47][0-9]{13}$/.test(numeroCarte)) return "AmericanExpress";
+        if(/^6011[0-9]{12}$|^6221[2-9][0-9]{10}$|^622[6-9][0-9]{11}$|^64[4-9][0-9]{13}$|^65[0-9]{14}$/.test(numeroCarte)) return "Discover";
+        return "Type Inconnu";
+    }
+    let resultat = verifierCarte("4111111111111111", "1", "2026", "123");
+    console.log(resultat)
+</script>
 </html>
