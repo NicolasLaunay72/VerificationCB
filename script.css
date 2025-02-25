@@ -1,0 +1,128 @@
+/* Importation de la police futuriste */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Reset & Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+body {
+    background: #0d0d0d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Conteneur principal */
+.container {
+    background: rgba(20, 20, 20, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    text-align: center;
+    width: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet néon sur le contour */
+.container::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    background: linear-gradient(45deg, cyan, magenta, purple);
+    filter: blur(10px);
+    opacity: 0.7;
+}
+
+/* Titre */
+h2 {
+    color: cyan;
+    text-transform: uppercase;
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px cyan;
+}
+
+/* Champs d'entrée */
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: cyan;
+    text-shadow: 0 0 5px cyan;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Style des champs */
+input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.8);
+    color: cyan;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    transition: 0.3s ease-in-out;
+}
+
+input:focus {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.9);
+    outline: none;
+}
+
+/* Bouton futuriste */
+button {
+    background: linear-gradient(45deg, cyan, magenta);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+button:hover {
+    background: linear-gradient(45deg, magenta, cyan);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.9);
+}
+
+/* Messages d'erreur et succès */
+.message {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+.success {
+    color: lime;
+    text-shadow: 0 0 10px lime;
+}
+
+.error {
+    color: red;
+    text-shadow: 0 0 10px red;
+}
