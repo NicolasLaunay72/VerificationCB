@@ -1,128 +1,174 @@
-/* Importation de la police futuriste */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-/* Reset & Body */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Orbitron', sans-serif;
-}
-
+/* 🌌 FOND CYBERPUNK */
 body {
-    background: #0d0d0d;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background: linear-gradient(135deg, #0d001a, #110022);
     overflow: hidden;
+    font-family: 'Orbitron', sans-serif; /* Police futuriste */
 }
 
-/* Conteneur principal */
+/* 🟣 EFFET CARTE FUTURISTE */
 .container {
-    background: rgba(20, 20, 20, 0.9);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    background: rgba(20, 10, 30, 0.95);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.5);
+    padding: 40px;
+    border-radius: 12px;
     text-align: center;
-    width: 400px;
+    width: 380px;
     position: relative;
-    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Effet néon sur le contour */
-.container::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    z-index: -1;
-    background: linear-gradient(45deg, cyan, magenta, purple);
-    filter: blur(10px);
-    opacity: 0.7;
+/* 🌟 EFFET FLOTTANT */
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 1), 0 0 50px rgba(0, 255, 255, 0.8);
 }
 
-/* Titre */
+/* 🔮 TITRE AVEC GLOW */
 h2 {
-    color: cyan;
-    text-transform: uppercase;
+    color: #00ffff;
     font-size: 22px;
-    margin-bottom: 15px;
-    text-shadow: 0 0 10px cyan;
-}
-
-/* Champs d'entrée */
-.input-group {
-    text-align: left;
+    text-shadow: 0 0 15px #00ffee, 0 0 30px rgba(0, 255, 255, 0.6);
     margin-bottom: 15px;
 }
 
+/* 🏷️ LABEL CYBER */
 label {
-    font-weight: bold;
-    color: cyan;
-    text-shadow: 0 0 5px cyan;
     display: block;
+    color: #00ffff;
     font-size: 14px;
-    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 8px; /* Ajuste selon ton besoin */
+    margin-bottom: 8px;
 }
 
-/* Style des champs */
+/* 🔲 CHAMPS DE SAISIE MODERNES */
 input {
     width: 100%;
     padding: 12px;
-    border: none;
-    border-radius: 5px;
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    background: transparent;
+    color: #00ffff;
     font-size: 16px;
-    background: rgba(0, 0, 0, 0.8);
-    color: cyan;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    transition: 0.3s ease-in-out;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+    transition: all 0.3s ease-in-out;
 }
 
+/* 💡 Effet néon au focus */
 input:focus {
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.9);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+    border-color: rgba(0, 255, 255, 1);
     outline: none;
 }
 
-/* Bouton futuriste */
+/* 🟢 ESPACEMENT DES INPUTS */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+/* ✅ Centrage parfait avec flexbox */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* S'assure que le conteneur prend toute la largeur */
+    margin-top: 20px;
+}
+
+
+/* ✅ Style du bouton */
 button {
-    background: linear-gradient(45deg, cyan, magenta);
-    color: white;
-    padding: 12px;
+    padding: 15px 40px;
+    background: linear-gradient(90deg, #00ffee, #00ccff);
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
-    width: 100%;
-    text-transform: uppercase;
+    font-size: 16px;
+    color: #001a2e;
     font-weight: bold;
-    letter-spacing: 2px;
-    transition: 0.3s ease-in-out;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    border-radius: 8px;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
 }
 
+/* ✨ Effet lumineux au survol */
 button:hover {
-    background: linear-gradient(45deg, magenta, cyan);
-    box-shadow: 0 0 20px rgba(255, 0, 255, 0.9);
+    background: linear-gradient(90deg, #00ccff, #00ffee);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+    transform: scale(1.05);
 }
 
-/* Messages d'erreur et succès */
+/* 🖱️ ANIMATION DU CURSEUR */
+.custom-cursor {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background: rgba(0, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 1);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.input-group input {
+    width: 80%; /* Ajuste selon la largeur désirée */
+    max-width: 300px; /* Pour éviter qu'ils ne soient trop larges */
+    text-align: center; /* Centrer le texte à l'intérieur */
+}
+.input-group:last-of-type {
+    margin-bottom: 20px; /* Ajuste la valeur pour plus ou moins d'espace */
+}
+
+/* Centrage des messages */
 .message {
-    margin-top: 15px;
-    font-weight: bold;
-    font-size: 14px;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    margin: 10px auto; /* Centre horizontalement */
+    padding: 10px;
+    border-radius: 5px;
+    width: fit-content; /* Ajuste la largeur au contenu */
+    min-width: 280px; /* Assure un minimum de largeur */
 }
 
-.success {
-    color: lime;
-    text-shadow: 0 0 10px lime;
+/* Message d'erreur */
+.message.error {
+    color: white;
+    background-color: red;
+    border: 2px solid darkred;
+    box-shadow: 0 0 10px red;
 }
 
-.error {
-    color: red;
-    text-shadow: 0 0 10px red;
+/* Message de refus */
+.message.refused {
+    color: white;
+    background-color: orange;
+    border: 2px solid darkorange;
+    box-shadow: 0 0 10px orange;
+}
+
+/* Message de succès */
+.message.success {
+    color: white;
+    background-color: limegreen;
+    border: 2px solid green;
+    box-shadow: 0 0 10px limegreen;
 }
